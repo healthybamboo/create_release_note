@@ -23,7 +23,7 @@ async function run() {
     core.info(`Current version: ${version}`);
 
     // Githubのタグを更新
-    const token = await core.getInput("token", { required: true });
+    const token = await core.getInput("github_token", { required: true });
     const octokit = github.getOctokit(token);
     const { owner, repo } = github.context.repo;
     const tagName = `v${version}`;

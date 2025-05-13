@@ -8,6 +8,6 @@ runs:
       description: ".versionファイルのパスを指定します。"
       required: false
       default: ".version"
-    token:
+    github_token:
       description: "GitHubトークンを指定します。"
       required: true
