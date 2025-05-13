@@ -43,12 +43,13 @@ async function run() {
     try {
         // .versionファイルから現在のバージョンを取得
         const workspace = process.env.GITHUB_WORKSPACE || process.cwd();
-        const dotVersionFile = core.getInput("dotnet-version-path") || ".version";
+        const dotVersionFile = core.getInput("dotnet_version_path") || ".version";
         const dotVersionFilePath = `${workspace}/${dotVersionFile}`;
         const version = fs.readFileSync(dotVersionFilePath, "utf8").trim();
         core.info(`Current version: ${version}`);
         // Githubのタグを更新
-        const octokit = github.getOctokit(core.getInput("github-token"));
+        const token = await core.getInput("github_token", { required: true });
+        const octokit = github.getOctokit(token);
         const { owner, repo } = github.context.repo;
         const tagName = `v${version}`;
         const tagMessage = `Release version ${version}`;
