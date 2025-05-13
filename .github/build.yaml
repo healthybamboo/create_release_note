@@ -1,0 +1,19 @@
+name: Node.jsをビルドします。
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: リポジトリをチェックアウトします。
+        uses: actions/checkout@3
+      - name: Node.jsをセットアップします。
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18"
+      - name: yarn
+        run: yarn install
+      - name: yarn build
+        run: yarn build
