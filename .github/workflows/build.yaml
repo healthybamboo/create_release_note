@@ -1,4 +1,4 @@
-name: Node.jsをビルドします。
+name: Build
 permissions: write-all
 on:
   push:
@@ -11,14 +11,16 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: リポジトリをチェックアウトします。
-        uses: actions/checkout@3
-      - name: Node.jsをセットアップします。
+      - uses: actions/checkout@v3
+
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "18"
+          node-version: "20"
+
       - name: yarn
         run: yarn install
+
       - name: yarn build
         run: yarn build
 
