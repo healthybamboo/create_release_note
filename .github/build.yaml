@@ -1,6 +1,10 @@
 name: Node.jsをビルドします。
+permissions: write-all
 on:
   push:
+    branches:
+      - main
+  pull_request:
     branches:
       - main
 jobs:
@@ -17,3 +21,11 @@ jobs:
         run: yarn install
       - name: yarn build
         run: yarn build
+
+      - name: push
+        run: |
+          git config --local user.name "github-actions"
+          git config --local user.email "github-actions@example.com"
+          git add -A
+          git commit -m "Update build"
+          git push
