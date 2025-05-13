@@ -3,3 +3,11 @@ description: .versionファイルから現在のバージョンを特定し、�
 runs:
   using: "node20"
   main: "dist/index.js"
+  inputs:
+    dotnet_version_path:
+      description: ".versionファイルのパスを指定します。"
+      required: false
+      default: ".version"
+    token:
+      description: "GitHubトークンを指定します。"
+      required: true
