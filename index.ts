@@ -45,7 +45,7 @@ async function run() {
       repo,
       tag_name: tagName,
       name: tagName,
-      body: `Release version ${version}`,
+      body: `Release version 『${version}』`,
     });
     core.info(`Release created: ${releaseResponse.data.html_url}`);
     core.info(`Release URL: ${releaseResponse.data.html_url}`);
