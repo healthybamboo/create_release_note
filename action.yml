@@ -1,5 +1,5 @@
 name: Create Release Note From .version file
 description: .versionファイルから現在のバージョンを特定し、バージョンタグとリリースノートを作成します。
 runs:
-  using: "node"
+  using: "node20"
   main: "dist/index.js"
