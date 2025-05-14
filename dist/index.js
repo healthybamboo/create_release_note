@@ -62,22 +62,10 @@ async function run() {
             type: "commit",
         };
         const tagResponse = await octokit.rest.git.createTag(tagObject);
+        core.info(`Tag created: ${tagName}`);
         core.info(`Tag created: ${tagResponse.data.tag}`);
-        // タグを元にリリースノートを作成
-        const releaseResponse = await octokit.rest.repos.createRelease({
-            owner,
-            repo,
-            tag_name: tagName,
-            name: tagName,
-            body: `Release version ${version}`,
-        });
-        core.info(`Release created: ${releaseResponse.data.html_url}`);
-        core.info(`Release URL: ${releaseResponse.data.html_url}`);
-        // 処理が成功したことを通知
-        core.info(`Version ${version} has been released successfully.`);
+        // 処理を成功としてマーク
         core.setOutput("tag", tagName);
-        core.setOutput("release", releaseResponse.data.html_url);
-        core.setOutput("version", version);
     }
     catch (error) {
         core.error(`Error reading version file: ${error.message}`);
