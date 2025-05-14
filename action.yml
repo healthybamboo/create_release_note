@@ -8,6 +8,9 @@ inputs:
   github_token:
     description: "GitHubトークンを指定します。"
     required: true
+outputs:
+  tag:
+    description: "作成されたタグを出力します。"
 runs:
   using: "node20"
   main: "dist/index.js"
